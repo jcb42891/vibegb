@@ -2,3 +2,5 @@ target/
 **/target/
 
 *.gb
+
+*_tmp*
