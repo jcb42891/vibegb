@@ -13,7 +13,7 @@ Last Updated: 2026-02-18
 
 ## 2.1 Unit Tests (Required Every PR)
 
-- Run command: `cargo test`
+- Run command: `cargo test --workspace --all-targets`
 - Scope:
 - CPU opcode semantics and cycle checks
 - MMU routing and memory behaviors
@@ -37,6 +37,15 @@ Policy:
 - mealybug-tearoom-tests (selected subsets)
 - SameSuite (selected subsets)
 
+### M1 Conformance Harness Commands
+
+- single blargg ROM (serial pass string expected):
+- `cargo run -p vibegb-runner -- --rom "<path-to-blargg-rom.gb>" --mode exec --max-steps 2000000 --expect-serial "Passed"`
+- single mooneye ROM (register pass signature expected):
+- `cargo run -p vibegb-runner -- --rom "<path-to-mooneye-rom.gb>" --mode exec --max-steps 2000000 --expect-mooneye-pass`
+- full M1 subset suite (manifest-driven):
+- `cargo run -p vibegb-runner -- --suite "tools/rom-suites/m1-subset.template.txt" --rom-root "<path-to-local-rom-suite-root>" --max-steps 2000000`
+
 ## 2.3 Commercial Smoke Tests (Pokemon Red)
 
 - ROM source: user-provided local file path.
@@ -46,13 +55,17 @@ Policy:
 - M2: reaches title screen and accepts input
 - M4: save/load flow works end-to-end
 
+### M0 Command
+
+- `cargo run -p vibegb-runner -- --rom "Pokemon - Red Version (USA, Europe) (SGB Enhanced).gb"`
+
 ## 3. CI Requirements
 
 - CI matrix runs on Windows/Linux/macOS.
 - CI stages:
-- `cargo fmt --check`
-- `cargo clippy --workspace -- -D warnings`
-- `cargo test`
+- `cargo fmt --all -- --check`
+- `cargo clippy --workspace --all-targets -- -D warnings`
+- `cargo test --workspace --all-targets`
 - milestone-appropriate ROM test subset
 
 - No regressions in milestone `must-pass` tests.
@@ -61,7 +74,7 @@ Policy:
 
 Run this before opening or updating a PR:
 
-1. `cargo test`
+1. `cargo test --workspace --all-targets`
 2. targeted ROM tests related to changed subsystem
 3. full milestone gate subset
 4. Pokemon Red smoke check relevant to active milestone
@@ -84,4 +97,3 @@ For milestone reviews, record:
 - Pokemon Red smoke status
 - New regressions
 - Linked issues
-

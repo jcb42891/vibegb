@@ -32,6 +32,10 @@ Do not provide vague validation guidance. Always specify concrete commands and o
 - Validation instructions must reflect newly added tests and current milestone gates.
 - Commercial ROM binaries are not stored in the repo; use local user-provided paths for smoke tests.
 
+## Work Block Completion Gate (Mandatory)
+
+- A work block is **not complete** until **all relevant test cases pass** (unit tests, lint/format checks, milestone ROM gates, and required smoke checks for the scope of the change).
+
 ## Local ROM Availability
 
 - A local Pokemon Red ROM is available in the project root:

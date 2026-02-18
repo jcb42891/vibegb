@@ -40,7 +40,7 @@ Exit Gates (`must-pass`):
 - CI matrix builds all three platforms.
 - Runner loads Pokemon Red header from local ROM path without crash.
 
-Status: `todo`
+Status: `done`
 
 ## M1 - CPU, Interrupts, Timers (Deterministic Core)
 
@@ -60,7 +60,7 @@ Exit Gates (`must-pass`):
 - blargg CPU instruction target subset passes.
 - mooneye timer/interrupt subset passes.
 
-Status: `todo`
+Status: `doing`
 
 ## M2 - DMG PPU Baseline + First Playable Smoke
 
@@ -232,4 +232,3 @@ Examples:
 - Draft `TEST_PLAN.md` with exact ROM list and run commands.
 - Create initial M0 backlog items with owners and estimates.
 - Set up CI matrix and baseline unit-test command wiring.
-

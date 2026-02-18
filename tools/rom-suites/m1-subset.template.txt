@@ -1,0 +1,31 @@
+# VibeGB M1 ROM subset template
+# Format:
+# label|rom_path|max_steps|expectation
+#
+# Fields:
+# - label: unique case name
+# - rom_path: absolute path or relative path (resolved via --rom-root or this file's directory)
+# - max_steps: optional; defaults to runner --max-steps when blank
+# - expectation: optional
+#   - serial:<text>     -> pass when serial output contains <text>
+#   - mooneye-pass      -> pass when BC=0305, DE=080D, HL=1522
+#
+# Example M1-focused entries (edit rom_path to match your local ROM layout):
+blargg-cpu-01-special|blargg/cpu_instrs/01-special.gb|2000000|serial:Passed
+blargg-cpu-02-interrupts|blargg/cpu_instrs/02-interrupts.gb|2000000|serial:Passed
+blargg-cpu-03-op-sp-hl|blargg/cpu_instrs/03-op sp,hl.gb|2000000|serial:Passed
+blargg-cpu-04-op-r-imm|blargg/cpu_instrs/04-op r,imm.gb|2000000|serial:Passed
+blargg-cpu-05-op-rp|blargg/cpu_instrs/05-op rp.gb|2000000|serial:Passed
+blargg-cpu-06-ld-r-r|blargg/cpu_instrs/06-ld r,r.gb|2000000|serial:Passed
+blargg-cpu-07-jr-jp-call-ret-rst|blargg/cpu_instrs/07-jr,jp,call,ret,rst.gb|2000000|serial:Passed
+blargg-cpu-08-misc-instrs|blargg/cpu_instrs/08-misc instrs.gb|2000000|serial:Passed
+blargg-cpu-09-op-r-r|blargg/cpu_instrs/09-op r,r.gb|9000000|serial:Passed
+blargg-cpu-10-bit-ops|blargg/cpu_instrs/10-bit ops.gb|9000000|serial:Passed
+blargg-cpu-11-op-a-hl|blargg/cpu_instrs/11-op a,(hl).gb|9000000|serial:Passed
+mooneye-timer-div-write|mooneye/acceptance/timer/div_write.gb|2000000|mooneye-pass
+mooneye-timer-tim00|mooneye/acceptance/timer/tim00.gb|2000000|mooneye-pass
+mooneye-timer-tim01|mooneye/acceptance/timer/tim01.gb|2000000|mooneye-pass
+mooneye-timer-tim10|mooneye/acceptance/timer/tim10.gb|2000000|mooneye-pass
+mooneye-timer-tim11|mooneye/acceptance/timer/tim11.gb|2000000|mooneye-pass
+mooneye-interrupts-ie-push|mooneye/acceptance/interrupts/ie_push.gb|2000000|mooneye-pass
+mooneye-interrupts-intr-timing|mooneye/acceptance/intr_timing.gb|2000000|mooneye-pass
